@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC418029-F474-4F42-90FF-42E0F60F10B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>STARS.Applications.VETS.Plugins.ShiftTableCalculator</RootNamespace>
+    <AssemblyName>STARS.Applications.VETS.Plugins.ShiftTableCalculator</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppDataPath">
+      <HintPath>T:\AppDataPath.dll</HintPath>
+    </Reference>
+    <Reference Include="ApplicationManagerItf, Version=1.10.51.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SRH Systems\STARS\ApplicationManagerItf.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework">
+      <HintPath>T:\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Infralution.Localization.Wpf">
+      <HintPath>T:\Infralution.Localization.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interfaces">
+      <HintPath>T:\Microsoft.Practices.Prism.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="STARS.Applications.Interfaces">
+      <HintPath>T:\STARS.Applications.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="STARS.Applications.UI.Common">
+      <HintPath>T:\VETS\STARS.Applications.UI.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="STARS.Applications.VETS.Common">
+      <HintPath>T:\STARS.Applications.VETS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="STARS.Applications.VETS.Execution">
+      <HintPath>T:\STARS.Applications.VETS.Execution.dll</HintPath>
+    </Reference>
+    <Reference Include="STARS.Applications.VETS.Interfaces">
+      <HintPath>T:\STARS.Applications.VETS.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="STARS.Applications.VETS.UI">
+      <HintPath>T:\VETS\STARS.Applications.VETS.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>T:\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WPFToolkit">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>T:\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoundShiftNames.cs" />
+    <Compile Include="BoundVehicle.cs" />
+    <Compile Include="BoundVisibilities.cs" />
+    <Compile Include="Command\CalculateShiftTableCommand.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="S:\STSHARE\CoreAssemblyInfo.cs">
+      <Link>Properties\CoreAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="S:\STSHARE\CoreAssemblyVersion.cs">
+      <Link>Properties\CoreAssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="ShiftTableCalculator.cs" />
+    <Compile Include="SystemLogService.cs" />
+    <Compile Include="TypeCast.cs" />
+    <Compile Include="ViewModels\Home\HomeViewCommandViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Home\HomeViewModel.cs" />
+    <Compile Include="Views\Home\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\color_image_16.png" />
+    <Resource Include="Images\white_image_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\Home\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if NOT "$(TargetDir)" == "T:\" (
+echo Copying output...
+copy "$(TargetPath)" "$(SolutionDir)..\BIN\VETS"
+copy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\BIN\VETS"
+copy "$(TargetPath)" "T:\VETS"
+copy "$(TargetDir)$(TargetName).pdb" "T:\VETS"
+copy "$(TargetDir)\ja-JP\$(TargetName).resources.dll" "T:\VETS\ja-JP"
+)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

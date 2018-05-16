@@ -1,0 +1,408 @@
+﻿<UserControl
+    x:Class="STARS.Applications.VETS.Plugins.ShiftTableCalculator.Views.Home.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    xmlns:attachableProperties="clr-namespace:STARS.Applications.UI.Common.AttachableProperties;assembly=STARS.Applications.UI.Common"
+    xmlns:controls="clr-namespace:STARS.Applications.UI.Common.Controls;assembly=STARS.Applications.UI.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:home="clr-namespace:STARS.Applications.VETS.Plugins.ShiftTableCalculator.ViewModels.Home"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:STARS.Applications.VETS.Plugins.ShiftTableCalculator.ViewModels"
+    d:DataContext="{d:DesignInstance home:HomeViewModel}"
+    ResxExtension.DefaultResxName="STARS.Applications.VETS.Plugins.ShiftTableCalculator.Properties.Resources" 
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <ScrollViewer Style="{DynamicResource NuclearScrollViewerInside}">
+        <Grid x:Name="LayoutRoot">
+            <ContentControl Focusable="False" Style="{DynamicResource PanelAnySizeStyle}">
+                <ItemsControl Focusable="False" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="900">
+                    <DockPanel>
+                        <StackPanel Background="#f2f2f2" Width="635" HorizontalAlignment="Left">
+                            <!--  Pick a vehicle -->
+                            <DockPanel Width="635" Height="40">
+                                <TextBlock
+                                    HorizontalAlignment="Left"
+                                    Margin="5,10,5,5"
+                                    VerticalAlignment="Center"
+                                    Foreground="Black"
+                                    Text="Pick a Vehicle" />
+                                <ComboBox 
+                                    Name="VehicleCombo"
+                                    Width="470" 
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right" 
+                                    Margin="0,5,5,0" 
+                                    ItemsSource="{Binding VehicleList}"
+                                    SelectedItem="{Binding SelectedVehicle}"
+                                    DisplayMemberPath="Name" />
+                            </DockPanel>
+                            <!--  Pick a trace -->
+                            <DockPanel Width="635" Height="35" Visibility="{Binding Visibilities.NormalMode}">
+                                <TextBlock
+                                HorizontalAlignment="Left"
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Pick a Trace" />
+                                <ComboBox 
+                                Name="NoteTextBox"
+                                Width="470" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right" 
+                                Margin="0,0,5,0" 
+                                ItemsSource="{Binding TraceList}"
+                                SelectedItem="{Binding SelectedTrace}"
+                                DisplayMemberPath="Name"/>
+                            </DockPanel>
+                            <!--  Shift Table Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.NormalMode}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Shift Table Name" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5"
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.ShiftName}" />
+                            </DockPanel>
+                            <!--  Part 1 Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part1}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 1" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5" 
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part1}" />
+                            </DockPanel>
+                            <!--  Part 1 Reduced Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part1Reduced}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 1 Reduced" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5" 
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part1Reduced}" />
+                            </DockPanel>
+                            <!--  Part 2 Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part2}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 2" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5"
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part2}" />
+                            </DockPanel>
+                            <!--  Part 2 Reduced Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part2Reduced}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 2 Reduced" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5" 
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part2Reduced}" />
+                            </DockPanel>
+                            <!--  Part 3 Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part3}">
+                                <TextBlock                            
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 3" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5" 
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part3}" />
+                            </DockPanel>
+                            <!--  Part 3 Reduced Name -->
+                            <DockPanel Width="635" Height="35" HorizontalAlignment="Left" Visibility="{Binding Visibilities.Part3Reduced}">
+                                <TextBlock                            
+                                Margin="5,5,5,5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Part 3 Reduced" />
+                                <TextBox
+                                HorizontalAlignment="Right" 
+                                Margin="5,5,5,5" 
+                                Padding="4"
+                                Width="470"
+                                Text="{Binding ShiftNames.Part3Reduced}" />
+                            </DockPanel>
+                            <DockPanel Width="635" Height="5" HorizontalAlignment="Left" />
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <Button
+                                Command="{Binding Command}"
+                                DataContext="{Binding CalculateShiftTableCommand}"
+                                Style="{DynamicResource WorkAreaCommandButtonStyle}" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="5,0,0,0"/>
+                                <CheckBox Name="BrokenBox" IsChecked="{Binding WmtcMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="WMTC Mode" Margin="5,0,0,0"/>
+                                </CheckBox>
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel>
+                        <StackPanel Background="#f2f2f2" Width="335" HorizontalAlignment="Left" Margin="0,10,0,0" Visibility="{Binding Visibilities.ShiftInput}">
+                            <!-- Engine Capacity -->
+                            <DockPanel>
+                                <TextBlock
+                                HorizontalAlignment="Left"
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Engine Capacity (cc)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.EngineCapacity, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Rated Power -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Rated Power (kW)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.RatedPower, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Kerb Mass -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Kerb Mass (kg)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.KerbMass, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Max Speed -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Max Speed (kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.MaxSpeed, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Rated Engine Speed -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Rated Engine Speed (rpm)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.RatedEngineSpeed, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Idling Speed -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Idling Speed (rpm)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                TextAlignment="Right"
+                                Width="170"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.IdlingSpeed, UpdateSourceTrigger=PropertyChanged}" />
+                            </DockPanel>
+                            <!--  Number of Gears -->
+                            <DockPanel>
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Vehicle Class" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Padding="4"
+                                IsReadOnly="True"
+                                TextAlignment="Right"
+                                Width="170"
+                                Background="#F3F3F3"
+                                Margin="5,5,5,5"
+                                Text="{Binding BoundVehicleObject.Class, Mode=OneWay}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock
+                                Margin="0,0,5,0"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                TextAlignment="Right"
+                                FontSize="10"
+                                Text="*Calculated from Engine Capacity and Max Speed" />
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Width="290" HorizontalAlignment="Left" Margin="10,10,0,0">
+                            <!--  Gear 1 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.ShiftInput}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Number of Gears" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.NumberOfGears, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 1 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[0]}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Gear 1 (rpm/kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.Gear1, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 2 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[1]}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Gear 2 (rpm/kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.Gear2, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 3 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[2]}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Gear 3 (rpm/kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.Gear3, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 4 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[3]}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Gear 4 (rpm/kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.Gear4, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 5 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[4]}">
+                                <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                Text="Gear 5 (rpm/kph)" />
+                                <TextBox
+                                HorizontalAlignment="Right"
+                                Margin="5"
+                                Padding="4"
+                                Width="170"
+                                TextAlignment="Right"
+                                Text="{Binding BoundVehicleObject.Gear5, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                            <!--  Gear 6 -->
+                            <DockPanel Background="#f2f2f2" Visibility="{Binding Visibilities.VisibleGears[5]}">
+                                <TextBlock
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    Foreground="Black"
+                                    Text="Gear 6 (rpm/kph)" />
+                                <TextBox
+                                    HorizontalAlignment="Right"
+                                    Margin="5"
+                                    Padding="4"
+                                    Width="170"
+                                    TextAlignment="Right"
+                                    Text="{Binding BoundVehicleObject.Gear6, UpdateSourceTrigger=PropertyChanged}"  />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </ItemsControl>
+            </ContentControl>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
